@@ -47,6 +47,6 @@ if __name__ == "__main__":
     # como gunicorn/uwsgi para despliegues y controla el modo debug mediante
     # la variable de entorno FLASK_DEBUG (por defecto está desactivado).
     debug_env = os.environ.get("FLASK_DEBUG", "0")
-    debug = str(debug_env).lower() in ("1", "true", "yes")
+    is_debug = str(debug_env).lower() in ("1", "true", "yes")
     port = int(os.environ.get("PORT", "5000"))
-    app.run(debug=debug, port=port, host="0.0.0.0")
+    app.run(debug=is_debug, port=port, host="0.0.0.0")
