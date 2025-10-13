@@ -1,4 +1,5 @@
 """Aplicación principal Flask que expone una calculadora web sencilla."""
+
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -9,7 +10,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     """Vista principal de la aplicación.
-    
+
     Maneja los formularios de operaciones aritméticas y renderiza la plantilla HTML.
     """
 

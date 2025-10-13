@@ -1,6 +1,7 @@
 # app/calculadora.py
 """Módulo calculadora: contiene operaciones aritméticas básicas."""
 
+
 def sumar(a: float, b: float) -> float:
     """Suma dos números."""
     return a + b
@@ -18,7 +19,7 @@ def multiplicar(a: float, b: float) -> float:
 
 def dividir(a: float, b: float) -> float:
     """Divide el primer número por el segundo.
-    
+
     Lanza:
         ZeroDivisionError: Si el divisor es cero.
     """
