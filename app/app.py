@@ -1,12 +1,18 @@
-# app/app.py
+"""Aplicación principal Flask que expone una calculadora web sencilla."""
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
+
 
 app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """Vista principal de la aplicación.
+    
+    Maneja los formularios de operaciones aritméticas y renderiza la plantilla HTML.
+    """
+
     resultado = None
     if request.method == "POST":
         try:
@@ -32,5 +38,7 @@ def index():
     return render_template("index.html", resultado=resultado)
 
 
-if __name__ == "__main__":  # pragma: no cover
-    app.run(debug=True, port=5000, host="0.0.0.0")  # Quita debug=True para producción
+if __name__ == "__main__":
+    # Ejecuta la aplicación Flask en modo desarrollo.
+    # Nota: Cambiar debug a False en entornos de producción.
+    app.run(debug=True, port=5000, host="0.0.0.0")
