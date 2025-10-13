@@ -41,12 +41,5 @@ def index():
     return render_template("index.html", resultado=resultado)
 
 
-if __name__ == "__main__":
-    # Ejecuta la aplicación Flask en modo desarrollo.
-    # Nota: Nunca habilites debug=True en producción. Usa un WSGI server
-    # como gunicorn/uwsgi para despliegues y controla el modo debug mediante
-    # la variable de entorno FLASK_DEBUG (por defecto está desactivado).
-    debug_env = os.environ.get("FLASK_DEBUG", "0")
-    is_debug = str(debug_env).lower() in ("1", "true", "yes")
-    port = int(os.environ.get("PORT", "5000"))
-    app.run(debug=is_debug, port=port, host="0.0.0.0")
+if __name__ == "__main__":  # pragma: no cover
+    app.run(debug=True, port=5000, host="0.0.0.0")  # Quita debug=True para producción
