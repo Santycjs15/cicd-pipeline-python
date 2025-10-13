@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
+import os
 
 
 app = Flask(__name__)
@@ -42,5 +43,10 @@ def index():
 
 if __name__ == "__main__":
     # Ejecuta la aplicación Flask en modo desarrollo.
-    # Nota: Cambiar debug a False en entornos de producción.
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    # Nota: Nunca habilites debug=True en producción. Usa un WSGI server
+    # como gunicorn/uwsgi para despliegues y controla el modo debug mediante
+    # la variable de entorno FLASK_DEBUG (por defecto está desactivado).
+    debug_env = os.environ.get("FLASK_DEBUG", "0")
+    debug = str(debug_env).lower() in ("1", "true", "yes")
+    port = int(os.environ.get("PORT", "5000"))
+    app.run(debug=debug, port=port, host="0.0.0.0")
