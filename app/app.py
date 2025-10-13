@@ -15,7 +15,6 @@ def index():
     y renderiza la plantilla HTML.
     """
 
-
     resultado = None
     if request.method == "POST":
         try:
