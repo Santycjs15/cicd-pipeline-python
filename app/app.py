@@ -40,6 +40,11 @@ def index():
     return render_template("index.html", resultado=resultado)
 
 
+@app.route("/health")
+def health():
+    return "OK", 200
+
+
 if __name__ == "__main__":  # pragma: no cover
     # Quita debug=True para producción
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app.run(debug=False, port=5000, host="0.0.0.0")
