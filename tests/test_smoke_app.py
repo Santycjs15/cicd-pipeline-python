@@ -18,7 +18,7 @@ def browser():
 def test_smoke_test(browser):
     """SMOKE TEST: Verifica carga básica y título."""
     # Lee la URL de producción desde una variable de entorno
-    app_url = os.environ.get("APP_BASE_URL", "http://localhost:5000") # Usar la variable de entorno APP_BASE_URL que inyectaremos en el pipeline con la URL del ALB de Producción
+    app_url = os.environ.get("APP_BASE_URL", "http://localhost:8000") # Usar la variable de entorno APP_BASE_URL que inyectaremos en el pipeline con la URL del ALB de Producción
     print(f"Smoke test ejecutándose contra: {app_url}") # Imprime para depuración
     try:
         browser.get(app_url + "/")
