@@ -1,5 +1,6 @@
 """Aplicación principal Flask que expone una calculadora web sencilla."""
 
+import os
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -45,6 +46,6 @@ def health():
     return "OK", 200
 
 
-if __name__ == "__main__":  # pragma: no cover
-    # Quita debug=True para producción
-    app.run(debug=False, port=5000, host="0.0.0.0")
+if __name__ == "__main__":
+    app_port = int(os.environ.get("PORT", 5000))  # <-- puerto configurable
+    app.run(host="0.0.0.0", port=app_port, debug=False)

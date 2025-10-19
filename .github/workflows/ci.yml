@@ -63,8 +63,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # El secreto que creaste
 
       - name: Run Unit Tests with pytest and Coverage
-        run: | 
-          pytest --ignore=tests/test_acceptance_app.py  --ignore=tests/test_smoke_app.py
+        run: |
+          pytest --ignore=tests/test_acceptance_app.py --ignore=tests/test_smoke_app.py
+
     
       # --- Pasos de Docker ---
 
