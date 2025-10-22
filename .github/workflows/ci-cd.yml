@@ -382,7 +382,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Ejecutar pruebas de humo contra el entorno de Producción
+      # 4. Ejecutar pruebas de humo contra el entorno de Producción aa
       - name: Run Smoke Tests against Production
         env:
           APP_BASE_URL: ${{ needs.deploy-cfn-prod.outputs.alb_url_prod }} # URL del ALB de Producción desde salidas
@@ -390,3 +390,4 @@ jobs:
           echo "Running smoke tests against: $APP_BASE_URL"
           sleep 30 # Espera prudencial
           pytest tests/test_smoke_app.py # Ejecutar las pruebas de humo
+          
