@@ -6,7 +6,11 @@ from .calculadora import sumar, restar, multiplicar, dividir
 
 
 app = Flask(__name__)
+app.config["DEBUG"] = False
 
+@app.route("/health")
+def health():
+    return "OK", 200
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -41,11 +45,9 @@ def index():
     return render_template("index.html", resultado=resultado)
 
 
-@app.route("/health")
-def health():
-    return "OK", 200
 
 
-if __name__ == "__main__":
-    app_port = int(os.environ.get("PORT", 5000))  # <-- puerto configurable
-    app.run(host="0.0.0.0", port=app_port, debug=False)
+
+if __name__ == "__main__":  # pragma: no cover
+    app_port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, port=app_port, host="0.0.0.0")
