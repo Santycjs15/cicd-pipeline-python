@@ -8,9 +8,11 @@ from .calculadora import sumar, restar, multiplicar, dividir
 app = Flask(__name__)
 app.config["DEBUG"] = False
 
+
 @app.route("/health")
 def health():
     return "OK", 200
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -43,9 +45,6 @@ def index():
             resultado = "Error: No se puede dividir por cero"
 
     return render_template("index.html", resultado=resultado)
-
-
-
 
 
 if __name__ == "__main__":  # pragma: no cover
