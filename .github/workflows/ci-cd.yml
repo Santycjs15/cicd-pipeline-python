@@ -358,7 +358,7 @@ jobs:
           echo "Production service deployment stable."
 
   # -------------------------------------
-  # Job de Pruebas de Humo en Producción
+  # Job de Pruebas de Humo en Produccióna
   # -------------------------------------
   smoke-test-prod:
     needs: [update-service-prod, deploy-cfn-prod] # Depende de que el servicio de prod esté estable
