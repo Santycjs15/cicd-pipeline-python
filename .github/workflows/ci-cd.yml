@@ -17,7 +17,7 @@ jobs:
   # Job de CI (Build, Test, Publish Docker Image)
   # -------------------------------------
   build-test-publish:
-    runs-on: ubuntu-latest # Runner a utilizar
+    runs-on: ubuntu-latest # Runner a utilizaraa
     outputs:
       repo_name: ${{ steps.set_outputs.outputs.repo_name }}
       image_tag: ${{ steps.set_outputs.outputs.image_tag }}
