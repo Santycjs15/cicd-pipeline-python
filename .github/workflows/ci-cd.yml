@@ -17,7 +17,7 @@ jobs:
   # Job de CI (Build, Test, Publish Docker Image)
   # -------------------------------------
   build-test-publish:
-    runs-on: ubuntu-latest # Runner a utilizaraa
+    runs-on: ubuntu-latest # Runner a utilizar
     outputs:
       repo_name: ${{ steps.set_outputs.outputs.repo_name }}
       image_tag: ${{ steps.set_outputs.outputs.image_tag }}
@@ -161,7 +161,7 @@ jobs:
               DockerImageUri=$IMAGE_URI \
               LabRoleArn=${{ secrets.LAB_ROLE_ARN }} \
               VpcId=${{ secrets.VPC_ID }} \
-              SubnetIds=${{ secrets.SUBNET_IDS }} \
+              SubnetIds="${{ secrets.SUBNET_IDS }}" \
             --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
             --no-fail-on-empty-changes # No falla si no hay cambios en la plantilla
 
@@ -297,7 +297,7 @@ jobs:
               DockerImageUri=$IMAGE_URI \
               LabRoleArn=${{ secrets.LAB_ROLE_ARN }} \
               VpcId=${{ secrets.VPC_ID }} \
-              SubnetIds=${{ secrets.SUBNET_IDS }} \
+              SubnetIds="${{ secrets.SUBNET_IDS }}" \
             --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
             --no-fail-on-empty-changes
 
@@ -358,7 +358,7 @@ jobs:
           echo "Production service deployment stable."
 
   # -------------------------------------
-  # Job de Pruebas de Humo en Produccióna
+  # Job de Pruebas de Humo en Producción
   # -------------------------------------
   smoke-test-prod:
     needs: [update-service-prod, deploy-cfn-prod] # Depende de que el servicio de prod esté estable
@@ -382,7 +382,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Ejecutar pruebas de humo contra el entorno de Producción aa
+      # 4. Ejecutar pruebas de humo contra el entorno de Producción
       - name: Run Smoke Tests against Production
         env:
           APP_BASE_URL: ${{ needs.deploy-cfn-prod.outputs.alb_url_prod }} # URL del ALB de Producción desde salidas
@@ -390,4 +390,3 @@ jobs:
           echo "Running smoke tests against: $APP_BASE_URL"
           sleep 30 # Espera prudencial
           pytest tests/test_smoke_app.py # Ejecutar las pruebas de humo
-          
