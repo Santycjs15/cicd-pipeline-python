@@ -146,19 +146,6 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # <--- USO DEL SESSION TOKEN
           aws-region: us-east-1
 
-      - name: Debug subnet IDs
-        run: |
-          echo "Subnet IDs recibidos: ${{ secrets.SUBNET_IDS }}"
-
-          
-      - name: Check if SUBNET_IDS is empty
-        run: |
-          if [ -z "${{ secrets.SUBNET_IDS }}" ]; then
-            echo "❌ ERROR: El valor de SUBNET_IDS está vacío."
-            exit 1
-          else
-            echo "✅ SUBNET_IDS tiene contenido (aunque no se muestra por seguridad)."
-          fi
       # 3. Desplegar/Actualizar el stack CloudFormation de Staging
       - name: Deploy CloudFormation Staging Stack
         run: |
