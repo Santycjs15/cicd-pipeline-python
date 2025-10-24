@@ -20,6 +20,7 @@ Parameters:
   SubnetIds:
     Type: List<AWS::EC2::Subnet::Id>
     Description: Lista de al menos DOS IDs de subredes PuBLICAS de la VPC por defecto en diferentes AZs.
+    Default: "subnet-00f5d03572c2ee830,subnet-091657b96c310ad9a"
 
 Resources:
   # --- Grupo de Logs para ECS ---
