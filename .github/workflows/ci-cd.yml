@@ -156,10 +156,14 @@ jobs:
           aws cloudformation deploy \
             --template-file template.yaml \
             --stack-name calculadora-staging-stack \
-            --no-fail-on-empty-changes # No falla si no hay cambios en la plantilla \
-            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \          
-            --parameter-overrides EnvironmentName=staging DockerImageUri=$IMAGE_URI LabRoleArn=${{ secrets.LAB_ROLE_ARN }} VpcId=${{ secrets.VPC_ID }} SubnetIds="${{ secrets.SUBNET_IDS }}" 
-
+            --parameter-overrides \
+              EnvironmentName=staging \
+              DockerImageUri=$IMAGE_URI \
+              LabRoleArn=${{ secrets.LAB_ROLE_ARN }} \
+              VpcId=${{ secrets.VPC_ID }} \
+              SubnetIds="${{ secrets.SUBNET_IDS }}" \
+            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
+            --no-fail-on-empty-changes # No falla si no hay cambios en la plantilla
 
       # 4. Obtener las salidas del Stack CloudFormation Staging
       - name: Get Staging Stack Outputs
