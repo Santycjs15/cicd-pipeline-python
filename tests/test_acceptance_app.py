@@ -77,6 +77,5 @@ def test_calculadora(browser, num1, num2, operacion, resultado_esperado):
     operacion_select.select_by_value(operacion)
     calcular_button.click()
 
-
     # Verifica con la funcion auxiliar:
     assert resultado_esperado in get_resultado(browser)

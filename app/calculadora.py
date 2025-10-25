@@ -27,9 +27,10 @@ def dividir(a: float, b: float) -> float:
         raise ZeroDivisionError("No se puede dividir por cero")
     return a / b
 
+
 def potencia(a: float, b: float) -> float:
     """Eleva a a la potencia b."""
-    return a ** b
+    return a**b
 
 
 def modulo(a: float, b: float) -> float:
